@@ -11,7 +11,7 @@ fetch('https://www.course-api.com/javascript-store-products')
         }
         return response.json(); // Parse the response as JSON
     })
-
+// Task 3: Display Product Details Dynamically
     .then(products => { //If the fetch is successful, extracts the product details and display them on the webpage.
         products.forEach(product => {
             const listItem = document.createElement('li');
