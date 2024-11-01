@@ -20,6 +20,10 @@ fetch('https://www.course-api.com/javascript-store-products')
         });
     
     })
-    
+// Task 4: Handle Errors Gracefully
+.catch(error => {
+    console.error('Failed to load products. Please try again later.', error);
+}); // Returns an error message
+
     
 
