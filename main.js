@@ -15,7 +15,7 @@ fetch('https://www.course-api.com/javascript-store-products')
     .then(products => { //If the fetch is successful, extracts the product details and display them on the webpage.
         products.forEach(product => {
             const listItem = document.createElement('li');
-            listItem.textContent = `${product.title} ${product.image} - $${product.price} `;
+            listItem.textContent = ` Company: ${product.fields.company}, Name: ${product.fields.name}, Price: $${product.fields.price}, Image: ${product.fields.image}`;
             productList.appendChild(listItem);
         });
     
@@ -23,7 +23,7 @@ fetch('https://www.course-api.com/javascript-store-products')
 // Task 4: Handle Errors Gracefully
 .catch(error => {
     console.error('Failed to load products. Please try again later.', error);
-}); // Returns an error message
+}); // Returns an error message if failed to load products
 
     
 
