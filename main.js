@@ -15,8 +15,15 @@ fetch('https://www.course-api.com/javascript-store-products')
     .then(products => { //If the fetch is successful, extracts the product details and display them on the webpage.
         products.forEach(product => {
             const listItem = document.createElement('li');
-            listItem.textContent = ` Company: ${product.fields.company}, Name: ${product.fields.name}, Price: $${product.fields.price}, Image: ${product.fields.image}`;
-            productList.appendChild(listItem);
+            //listItem.textContent = ` Company: ${product.fields.company}, Name: ${product.fields.name}, Price: $${product.fields.price}, Image: ${product.fields.image}`;
+    listItem.innerHTML = `
+    <img src="${product.fields.imageUrl}" alt="${product.fields.name}">
+    <p>${product.fields.name}</p>
+    <p>Company: ${product.fields.company}</p>
+    <p>Price: $${(product.fields.price / 100).toFixed(2)}</p>
+        `;
+        productList.appendChild(listItem);
+            console.log(product);
         });
     
     })
