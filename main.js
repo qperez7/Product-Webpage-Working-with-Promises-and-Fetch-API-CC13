@@ -3,6 +3,7 @@
 // Task 2: Fetch Products from the API Using Fetch and Promises
 const productList = document.getElementById('productList');
 
+
 // Fetch data from the supplier's product API
 fetch('https://www.course-api.com/javascript-store-products')
     .then(response => {
@@ -15,17 +16,18 @@ fetch('https://www.course-api.com/javascript-store-products')
     .then(products => { //If the fetch is successful, extracts the product details and display them on the webpage.
         products.forEach(product => {
             const listItem = document.createElement('li');
-            //listItem.textContent = ` Company: ${product.fields.company}, Name: ${product.fields.name}, Price: $${product.fields.price}, Image: ${product.fields.image}`;
-    listItem.innerHTML = `
-    <img src="${product.fields.image/image.jpeg}" alt="${product.fields.name}">
-    <p>${product.fields.name}</p>
+            
+            listItem.innerHTML = `
+    <img src="${product.fields.image[0].url}" 
+     alt="${product.fields.name}">
+    <p>Name: ${product.fields.name}</p>
     <p>Company: ${product.fields.company}</p>
     <p>Price: $${(product.fields.price / 100).toFixed(2)}</p>
         `;
-        productList.appendChild(listItem);
-            console.log(product);
+        productList.appendChild(listItem); // Adds each product to the list
+            console.log(product); // Logs each product in the console for reference
         });
-    
+        
     })
 // Task 4: Handle Errors Gracefully
 .catch(error => {
